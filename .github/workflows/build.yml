@@ -10,12 +10,14 @@ jobs:
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: '25'
+          java-version: '21'
       - name : java version
         run: java --version
 
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout to Code
+        uses: actions/checkout@v7
       - name: clean & install
         run: mvn --update-snapshots verify clean install
